@@ -1,0 +1,205 @@
+/* ---- Configuration ---- */
+configuration {
+    modi:                       "drun,filebrowser,window,run";
+    font:                       "JetBrainsMono Nerd Font 11";
+    show-icons:                 true;
+    icon-theme:                 "Tela-circle-dracula";
+    display-drun:               " ";  /* Icon: nf-fa-rocket */
+    display-run:                " ";  /* Icon: nf-fa-terminal */
+    display-filebrowser:        " ";  /* Icon: nf-fa-folder */
+    display-window:             " ";  /* Icon: nf-fa-window_maximize */
+    drun-display-format:        "{name}";
+    hover-select:               false;
+    me-select-entry:            "";
+    me-accept-entry:            "MousePrimary";
+    window-format:              "{w} · {c} · {t}";
+}
+
+/* ---- Colors ---- */
+* {
+    /* Base colors */
+    bg:                         #1a1b2680;  /* Dark background with more transparency */
+    bg-alt:                     #292b3d80;  /* Alternative background with transparency */
+    fg:                         #e0e2f5;    /* Default text color */
+    
+    /* Cyan theme colors */
+    cyan:                       #00ffff;
+    cyan-bright:                #5dfdfd;
+    cyan-dim:                   #0db8b8;
+    
+    /* Pink theme colors */
+    pink:                       #ff00ff;
+    pink-bright:                #ff5fff;
+    pink-dim:                   #b800b8;
+    
+    /* Element colors */
+    search-bg:                  transparent;  /* Transparent search background */
+    element-bg:                 rgba(26, 27, 38, 0.7);  /* Dark transparent */
+    element-border:             #00ffff20;  /* Subtle cyan border */
+    element-selected-bg:        #ff00ff30;  /* Pink with transparency */
+    
+    border-color:               @cyan-bright;
+    border-radius:              12px;
+    border-width:               2px;
+}
+
+/* Main Window */
+window {
+    width:                      56em;
+    height:                     35em;
+    transparency:               "real";
+    fullscreen:                 false;
+    enabled:                    true;
+    cursor:                     "default";
+    spacing:                    0px;
+    padding:                    0px;
+    border:                     @border-width;
+    border-color:               @cyan;
+    border-radius:              @border-radius;
+    background-color:           @bg;
+    location:                   center;
+}
+
+mainbox {
+    enabled:                    true;
+    spacing:                    0px;
+    padding:                    0px;
+    orientation:                vertical;
+    children:                   [ "inputbar", "listbox" ];
+    background-color:           transparent;
+}
+
+/* Search bar area */
+inputbar {
+    enabled:                    true;
+    spacing:                    0px;
+    padding:                    16px;
+    children:                   [ "textbox-prompt-colon", "entry" ];
+    background-color:           transparent;
+    border:                     0 0 2px 0;
+    border-color:               @cyan;
+    border-top-left-radius:     @border-radius;
+    border-top-right-radius:    @border-radius;
+    border-bottom-left-radius:  0;
+    border-bottom-right-radius: 0;
+}
+
+textbox-prompt-colon {
+    enabled:                    true;
+    expand:                     false;
+    str:                        " ";  /* Icon: nf-fa-search */
+    padding:                    10px;
+    text-color:                 @cyan;
+    background-color:           transparent;
+    font:                       "JetBrainsMono Nerd Font 14";
+}
+
+entry {
+    enabled:                    true;
+    spacing:                    0px;
+    padding:                    10px;
+    background-color:           transparent;
+    text-color:                 @fg;
+    cursor:                     text;
+    placeholder:                "Search...";
+    placeholder-color:          #c0caf580;
+    font:                       "JetBrainsMono Nerd Font 12";
+}
+
+/* List area */
+listbox {
+    padding:                    8px;
+    spacing:                    4px;
+    orientation:                vertical;
+    children:                   [ "listview" ];
+    background-color:           transparent;
+}
+
+listview {
+    padding:                    8px;
+    spacing:                    8px;
+    enabled:                    true;
+    columns:                    2;
+    lines:                      5;
+    cycle:                      true;
+    dynamic:                    true;
+    scrollbar:                  false;
+    layout:                     vertical;
+    reverse:                    false;
+    fixed-height:               true;
+    fixed-columns:              true;
+    cursor:                     "default";
+    background-color:           transparent;
+    text-color:                 @fg;
+}
+
+/* List elements */
+element {
+    enabled:                    true;
+    spacing:                    10px;
+    padding:                    12px;
+    border-radius:              8px;
+    border:                     1px;
+    border-color:               @element-border;
+    cursor:                     pointer;
+    background-color:           rgba(26, 27, 38, 0.7);  /* Dark transparent */
+    text-color:                 @cyan;  /* Cyan text color */
+}
+
+element.normal.normal {
+    background-color:           rgba(26, 27, 38, 0.7);  /* Dark transparent */
+    text-color:                 @cyan;  /* Cyan text color */
+}
+
+element.alternate.normal {
+    background-color:           rgba(26, 27, 38, 0.65);  /* Slightly different for alternate items */
+    text-color:                 @cyan;  /* Cyan text color */
+}
+
+element selected.normal {
+    background-color:           @element-selected-bg;
+    text-color:                 #ffffff;  /* White text for selected item */
+    border:                     1px;
+    border-color:               @pink;
+    border-radius:              8px;
+}
+
+element-icon {
+    size:                       28px;
+    cursor:                     inherit;
+    background-color:           transparent;
+    text-color:                 inherit;
+    padding:                    0px 10px 0px 0px;
+}
+
+element-text {
+    vertical-align:             0.5;
+    horizontal-align:           0.0;
+    cursor:                     inherit;
+    background-color:           transparent;
+    text-color:                 inherit;  /* Inherit from parent element */
+}
+
+/* Message area */
+message {
+    background-color:           transparent;
+    border-radius:              @border-radius;
+    padding:                    8px;
+    margin:                     8px 0 0 0;
+}
+
+textbox {
+    padding:                    8px;
+    border-radius:              @border-radius;
+    background-color:           transparent;
+    text-color:                 @fg;
+    vertical-align:             0.5;
+    horizontal-align:           0.0;
+}
+
+error-message {
+    padding:                    12px;
+    border-radius:              @border-radius;
+    background-color:           @bg-alt;
+    text-color:                 @pink-bright;
+}

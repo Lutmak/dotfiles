@@ -1,0 +1,48 @@
+/* ---- Import base configuration ---- */
+@import "config.rasi"
+
+/* ---- Power menu-specific modifications ---- */
+window {
+    width:                      30em;
+    location:                   center;
+}
+
+listview {
+    columns:                    5;
+    lines:                      1;
+}
+
+mainbox {
+    children:                   [ "listbox" ];
+}
+
+element {
+    orientation:                vertical;
+    padding:                    20px 0;
+}
+
+element-icon {
+    size:                       48px;
+    horizontal-align:           0.5;
+}
+
+element-text {
+    horizontal-align:           0.5;
+    padding:                    10px 0 0 0;
+}
+
+/* Glassy background effect */
+window {
+    background-color:           #1a1b2688;
+    border-color:               @highlight-color;
+}
+
+element {
+    background-color:           #ffffff10;
+}
+
+element selected.normal {
+    background-color:           #00ffff30;
+    border:                     1px;
+    border-color:               @highlight-color-bright;
+}

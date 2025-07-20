@@ -1,0 +1,222 @@
+/* ---- Configuration ---- */
+configuration {
+    modi:                       "drun,filebrowser,window,run";
+    font:                       "JetBrainsMono Nerd Font 11";
+    show-icons:                 true;
+    icon-theme:                 "Tela-circle-dracula";
+    display-drun:               " ";  /* Icon: nf-fa-rocket */
+    display-run:                "";  /* Icon: nf-fa-terminal */
+    display-filebrowser:        "";  /* Icon: nf-fa-folder */
+    display-window:             "";  /* Icon: nf-fa-window_maximize */
+    drun-display-format:        "{name}";
+    drun-history:               true;
+    sorting-method:             "normal";
+    hover-select:               false;
+    me-select-entry:            "";
+    me-accept-entry:            "MousePrimary";
+    window-format:              "{w} · {c} · {t}";
+}
+
+/* ---- Colors ---- */
+* {
+    /* Base colors */
+    bg:                         #1a1b2680;  /* Dark background with more transparency */
+    bg-alt:                     #292b3d80;  /* Alternative background with transparency */
+    fg:                         #e0e2f5;    /* Default text color */
+    
+    /* Cyan theme colors */
+    cyan:                       #00ffff;
+    cyan-bright:                #5dfdfd;
+    cyan-dim:                   #0db8b8;
+    
+    /* Pink theme colors */
+    pink:                       #ff00ff;
+    pink-bright:                #ff5fff;
+    pink-dim:                   #b800b8;
+    
+    /* Element colors */
+    search-bg:                  transparent;  /* Transparent search background */
+    element-bg:                 rgba(26, 27, 38, 0.7);  /* Dark transparent */
+    element-border:             #00ffff20;  /* Subtle cyan border */
+    element-selected-bg:        #ff00ff30;  /* Pink with transparency */
+    
+    border-color:               @cyan-bright;
+    border-radius:              12px;
+    border-width:               2px;
+}
+
+/* Main Window */
+window {
+    /* Responsive sizing - percentage of screen */
+    width:                      50%;
+    height:                     60%;
+    
+    /* Limit maximum size for very large screens */
+    max-width:                  1600px;
+    max-height:                 900px;
+    
+    /* Ensure minimum size for small screens */
+    min-width:                  600px;
+    min-height:                 400px;
+    
+    transparency:               "real";
+    fullscreen:                 false;
+    enabled:                    true;
+    cursor:                     "default";
+    spacing:                    0px;
+    padding:                    0px;
+    border:                     @border-width;
+    border-color:               @cyan;
+    border-radius:              @border-radius;
+    background-color:           @bg;
+    location:                   center;
+}
+
+mainbox {
+    enabled:                    true;
+    spacing:                    0px;
+    padding:                    0px;
+    orientation:                vertical;
+    children:                   [ "inputbar", "listbox" ];
+    background-color:           transparent;
+}
+
+/* Search bar area */
+inputbar {
+    height:                     15%;      /* Reduced height to 1/3 of original */
+    margin-left:                30%;
+    margin-right:               30%;
+    enabled:                    true;
+    spacing:                    0px;
+    children:                   [ "textbox-prompt-colon", "entry" ];
+    padding:                    1%;
+    background-color:           transparent;
+    border:                     0 0 2px 0;
+    border-color:               @cyan;
+    border-top-left-radius:     @border-radius;
+    border-top-right-radius:    @border-radius;
+    border-bottom-left-radius:  0;
+    border-bottom-right-radius: 0;
+}
+
+textbox-prompt-colon {
+    enabled:                    true;
+    expand:                     false;
+    str:                        " ";  /* Icon: nf-fa-search */
+    padding:                    0.3%;    /* Reduced padding */
+    text-color:                 @cyan;
+    background-color:           transparent;
+    font:                       "JetBrainsMono Nerd Font 12"; /* Smaller font */
+}
+
+entry {
+    enabled:                    true;
+    spacing:                    0px;
+    padding:                    0.4% 0.3% 0% 0.3%;  /* Reduced bottom padding */
+    background-color:           transparent;
+    text-color:                 @fg;
+    cursor:                     text;
+    placeholder:                "Search...";
+    placeholder-color:          #c0caf580;
+    font:                       "JetBrainsMono Nerd Font 10"; /* Smaller font */
+}
+
+/* List area */
+listbox {
+    padding:                    1% 1% 0% 1%;
+    spacing:                    0.5%;  /* Relative spacing */
+    orientation:                vertical;
+    children:                   [ "listview" ];
+    background-color:           transparent;
+}
+
+listview {
+    padding:                    1%;
+    spacing:                    1%;  /* Relative spacing */
+    enabled:                    true;
+    columns:                    2;
+    lines:                      5;     /* Exactly 5 items per column */
+    cycle:                      true;
+    dynamic:                    true;
+    scrollbar:                  false;
+    layout:                     vertical;
+    reverse:                    false;
+    fixed-height:               true;
+    fixed-columns:              true;
+    background-color:           transparent;
+    cursor:                     "default";
+    text-color:                 @fg;
+}
+
+/* List elements */
+element {
+    enabled:                    true;
+    spacing:                    1%;  /* Relative spacing */
+    padding:                    1.5%;  /* Reduced bottom padding (3rd value) */    
+    border-radius:              8px;
+    border:                     1px;
+    border-color:               @element-border;
+    cursor:                     pointer;
+    background-color:           rgba(26, 27, 38, 0.7);  /* Dark transparent */
+    text-color:                 @cyan;  /* Cyan text color */
+}
+
+element.normal.normal {
+    background-color:           rgba(26, 27, 38, 0.7);  /* Dark transparent */
+    text-color:                 @cyan;  /* Cyan text color */
+}
+
+element.alternate.normal {
+    background-color:           rgba(26, 27, 38, 0.65);  /* Slightly different for alternate items */
+    text-color:                 @cyan;  /* Cyan text color */
+}
+
+element selected.normal {
+    background-color:           @element-selected-bg;
+    text-color:                 #ffffff;  /* White text for selected item */
+    border:                     1px;
+    border-color:               @pink;
+    border-radius:              8px;
+}
+
+element-icon {
+    size:                       48px;    /* Fixed size for icons */
+    cursor:                     inherit;
+    background-color:           transparent;
+    text-color:                 inherit;
+    padding:                    0px 10px 0px 0px;
+    vertical-align:             0.5;    /* Center vertically */
+    horizontal-align:           0.5;    /* Center horizontally */
+}
+
+element-text {
+    vertical-align:             0.5;    /* Center vertically */
+    horizontal-align:           0.5;    /* Center horizontally */
+    cursor:                     inherit;
+    background-color:           transparent;
+    text-color:                 inherit;  /* Inherit from parent element */
+}
+
+/* Message area */
+message {
+    background-color:           transparent;
+    border-radius:              @border-radius;
+    padding:                    1%;  /* Relative padding */
+    margin:                     1% 0 0 0;  /* Relative margin */
+}
+
+textbox {
+    padding:                    1%;  /* Relative padding */
+    border-radius:              @border-radius;
+    background-color:           transparent;
+    text-color:                 @fg;
+    vertical-align:             0.5;
+    horizontal-align:           0.0;
+}
+
+error-message {
+    padding:                    1.5%;  /* Relative padding */
+    border-radius:              @border-radius;
+    background-color:           @bg-alt;
+    text-color:                 @pink-bright;
+}

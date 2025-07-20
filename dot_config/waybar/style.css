@@ -1,0 +1,206 @@
+* {
+    border: none;
+    border-radius: 0px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 13px;
+    min-height: 10px;
+}
+
+/* Define colors to match Rofi theme */
+@define-color bg-color rgba(26, 27, 38, 0.7);
+@define-color border-color #00ffff;
+@define-color text-color #00ffff;
+@define-color accent-color #ff00ff;
+@define-color white-text #e0e2f5;
+@define-color selected-bg rgba(255, 0, 255, 0.3);
+
+window#waybar {
+    background-color: transparent;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#cpu,
+#clock,
+#window,
+#workspaces,
+#hyprland-window,
+#hyprland-workspaces,
+#custom-archmenu,
+#tray,
+#pulseaudio,
+#network,
+#custom-mouse-battery
+#custom-fps-all {
+   color: @text-color;
+   background: @bg-color;
+   margin: 4px 0px 4px 0px;
+   opacity: 1;
+   border: 1px solid rgba(0, 255, 255, 0.2);
+   border-radius: 8px;
+}
+
+tooltip {
+    background: @bg-color;
+    color: @white-text;
+    border-radius: 12px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: @border-color;
+}
+
+#workspaces button {
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px;
+    border-radius: 8px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+    color: @text-color;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#workspaces button.active {
+    background: @selected-bg;
+    color: @white-text;
+    margin-left: 3px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 3px;
+    border: 1px solid @accent-color;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#workspaces button:hover {
+    background: rgba(255, 0, 255, 0.2);
+    border: none;
+}
+
+#workspaces {
+    padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/* Make archmenu and window look connected */
+#custom-archmenu {
+    color: @text-color;
+    padding-left: 10px;
+    padding-right: 5px;
+    background: @bg-color;
+    border-radius: 8px 0 0 8px;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-right: none;
+    margin-right: 0;
+}
+
+#window {
+    color: @text-color;
+    padding-left: 5px;
+    padding-right: 10px;
+    background: @bg-color;
+    border-radius: 0 8px 8px 0;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-left: none;
+    margin-left: 0;
+}
+
+/* CPU module styling */
+#cpu {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#custom-fps-all {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 12px;
+    color: @text-color;
+    margin-left: 10px;
+}
+#custom-fps-all:hover {
+    box-shadow: 0 0 3px 1px rgba(0, 255, 255, 0.3);
+}
+
+#pulseaudio {
+    color: @text-color;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#tray {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 4px;
+}
+
+#network {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#network.disconnected {
+    color: @accent-color;
+}
+
+#clock {
+    color: @text-color;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#custom-mouse-battery {
+    color: @text-color;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: @bg-color;
+    margin: 4px 0px 4px 0px;
+    opacity: 1;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+#custom-mouse-battery.critical {
+    color: @accent-color;
+    animation: blink 1s infinite alternate;
+}
+
+#custom-mouse-battery.low {
+    color: #ffbe6f;
+}
+
+#custom-mouse-battery.medium {
+    color: @text-color;
+}
+
+#custom-mouse-battery.high {
+    color: @text-color;
+}
+
+#custom-mouse-battery.charging {
+    color: @text-color;
+}
+
+#custom-mouse-battery:hover {
+    box-shadow: 0 0 3px 1px rgba(0, 255, 255, 0.3);
+}
+
+/* Specific styling for pulseaudio states */
+#pulseaudio.muted {
+    color: @accent-color;
+    border-bottom: 2px solid @accent-color;
+}
+
+/* Add subtle glow effect to active modules */
+#workspaces button.active,
+#custom-archmenu:hover {
+    box-shadow: 0 0 3px 1px rgba(0, 255, 255, 0.3);
+}
+
+/* Empty window styling to ensure it's always visible */
+#window.empty {
+    min-width: 5px;
+}

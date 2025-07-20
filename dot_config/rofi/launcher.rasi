@@ -1,0 +1,55 @@
+/* Import base configuration */
+@import "config.rasi"
+
+/* Grid layout specific settings */
+window {
+    width:                      60em;
+    height:                     40em;
+}
+
+listview {
+    columns:                    2;
+    lines:                      5;
+    spacing:                    10px;
+    padding:                    12px;
+}
+
+element {
+    orientation:                horizontal;
+    padding:                    14px;
+    spacing:                    12px;
+    border:                     1px;
+    border-color:               #00ffff15;
+    background-color:           #1a1b2640;  /* Very transparent dark for items */
+}
+
+element selected.normal {
+    background-color:           #ff00ff25;
+    text-color:                 #ffffff;
+    border-color:               #ff00ff80;
+    border-radius:              8px;
+    
+    /* Add a subtle glow effect */
+    box-shadow:                 0 0 4px 2px #ff00ff30;
+}
+
+/* Alternate element colors for a subtle striped effect */
+element alternate.normal {
+    background-color:           #1a1b2635;
+}
+
+element-icon {
+    size:                       28px;
+    padding:                    0 8px 0 0;
+}
+
+/* For a more coherent theme, add a subtle gradient to the top bar */
+inputbar {
+    background-image:           linear-gradient(to right, #00ffff20, #00ffff10);
+    border-bottom:              1px;
+    border-color:               #00ffff40;
+}
+/* Make text sharper for better readability */
+element-text {
+    text-color:                 #e0e2f5;
+}

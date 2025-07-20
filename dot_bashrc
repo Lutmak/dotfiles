@@ -1,0 +1,21 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+#export BLE_DISABLE_BIND_WARNINGS=1
+#[[ $- == *i* ]] && source /usr/share/blesh/ble.sh --attach=none
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+eval "$(starship init bash)"
+eval "$(fzf --bash)"
+
+. "$HOME/.local/bin/env"
+export CUDA_HOME=/opt/cuda
+export PATH=$PATH:/opt/cuda/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cuda/lib64
+export EDITOR=vim

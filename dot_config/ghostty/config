@@ -1,0 +1,4 @@
+theme = "Dark Pastel"
+confirm-close-surface = false
+background-opacity = .7
+background-blur = true

@@ -1,0 +1,44 @@
+/* ---- Import base configuration ---- */
+@import "config.rasi"
+
+/* ---- Screenshot menu-specific modifications ---- */
+window {
+    width:                      22em;
+    location:                   northeast;
+    anchor:                     northeast;
+    x-offset:                   -20px;
+    y-offset:                   20px;
+}
+
+listview {
+    columns:                    1;
+    lines:                      4;
+}
+
+element-icon {
+    size:                       0px;
+}
+
+element-text {
+    horizontal-align:           0.5;
+}
+
+mainbox {
+    children:                   [ "listbox" ];
+}
+
+/* Create a glassy foggy effect */
+window {
+    background-color:           #1a1b2688;
+    border-color:               @accent-color-bright;
+}
+
+element {
+    horizontal-align:           0.5;
+    background-color:           #ffffff10;
+}
+
+element selected.normal {
+    background-color:           #ff00ff40;
+    border-color:               @accent-color;
+}

@@ -1,0 +1,87 @@
+{
+    "layer": "bottom",
+    "position": "top",
+    "mode": "dock",
+    "height": 35,
+    "exclusive": true,
+    "passthrough": false,
+    "reload_style_on_change": true,
+    "modules-left": ["custom/archmenu", "hyprland/window", "cpu"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["custom/mouse-battery", "network", "clock", "tray","pulseaudio"],
+    "hyprland/window": {
+        "separate-outputs": false,
+        "format": "{}",
+        "max-length": 40
+    },
+    "cpu": {
+        "interval": 10,
+        "format": "󰍛 {usage}%",
+        "format-alt": "{icon0}{icon1}{icon2}{icon3}",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+    },
+    "network": {
+        "tooltip": true,
+        "format-wifi": " {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "format-ethernet": " {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
+        "format-linked": "󰈀 {ifname} (No IP)",
+        "format-disconnected": " 󰖪 ",
+        "tooltip-format-disconnected": "Disconnected",
+        "interval": 2,
+        "on-click-right": "~/.config/waybar/network.py"
+    },
+    "custom/mouse-battery": {
+        "exec": "~/.config/waybar/scripts/mousebattery.sh",
+        "return-type": "json",
+        "interval": 60,
+        "format": "{}",
+        "on-click": "polychromatic-controller"
+    },
+    "custom/archmenu": {
+        "format": "󰣇 ┃",
+        "tooltip": false,
+        "on-click": "wlogout",
+        "on-click-right": "rofi -show drun"
+    },
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "on-click": "activate",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "婢 0%",
+        "on-click": "pavucontrol -t 3",
+        "on-click-middle": "~/.config/hypr/scripts/volumecontrol.sh -o m",
+        "on-scroll-up": "~/.config/hypr/scripts/volumecontrol.sh -o i",
+        "on-scroll-down": "~/.config/hypr/scripts/volumecontrol.sh -o d",
+        "tooltip-format": "{icon} {desc} // {volume}%",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        }
+    },
+    "tray": {
+        "icon-size": 20,
+        "spacing": 9
+    },
+    "clock": {
+        "format": " {:%H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "on-click": "~/.config/eww/scripts/toggle_control_center.sh"
+    }
+}
