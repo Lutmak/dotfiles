@@ -13,6 +13,7 @@ alias grep='grep --color=auto'
 
 eval "$(starship init bash)"
 eval "$(fzf --bash)"
+eval "$(zoxide init bash)"
 
 . "$HOME/.local/bin/env"
 export CUDA_HOME=/opt/cuda
