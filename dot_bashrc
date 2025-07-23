@@ -13,11 +13,10 @@ alias grep='grep --color=auto'
 
 eval "$(starship init bash)"
 eval "$(fzf --bash)"
-eval "$(zoxide init bash)"
 
 . "$HOME/.local/bin/env"
 export CUDA_HOME=/opt/cuda
 export PATH=$PATH:/opt/cuda/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cuda/lib64
 export EDITOR=vim
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
