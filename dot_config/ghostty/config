@@ -1,4 +1,5 @@
 theme = "Dark Pastel"
 confirm-close-surface = false
 background-opacity = .7
+font-feature = -calt, -liga, -dlig
 font-family = "JetBrainsMono Nerd Font"

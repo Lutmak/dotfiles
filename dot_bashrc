@@ -8,8 +8,9 @@
 #export BLE_DISABLE_BIND_WARNINGS=1
 #[[ $- == *i* ]] && source /usr/share/blesh/ble.sh --attach=none
 
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux new-session -A -s main
+fi
 
 eval "$(starship init bash)"
 eval "$(fzf --bash)"
