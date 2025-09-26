@@ -1,23 +1,26 @@
 #
 # ~/.bashrc
 #
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 #export BLE_DISABLE_BIND_WARNINGS=1
 #[[ $- == *i* ]] && source /usr/share/blesh/ble.sh --attach=none
 
+# Start tmux automatically, but not in VS Code
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux new-session -A -s main
+  # Only start tmux if NOT in VS Code
+  if [ "$TERM_PROGRAM" != "vscode" ]; then
+    exec tmux new-session -A -s main
+  fi
 fi
 
 eval "$(starship init bash)"
 eval "$(fzf --bash)"
-
 . "$HOME/.local/bin/env"
 export CUDA_HOME=/opt/cuda
 export PATH=$PATH:/opt/cuda/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cuda/lib64
 export EDITOR=nvim
 export PATH="$HOME/bin:$PATH"
+eval "$(zoxide init bash)"
